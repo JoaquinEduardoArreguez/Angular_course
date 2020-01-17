@@ -2,54 +2,44 @@
  * Node on weighted graph.
  */
 class GraphNode {
-    nombre : string;
-    outgoingLinks : GraphLink[];
-    constructor(nombre : string) {
-        this.nombre = nombre;
-        this.outgoingLinks = []; // Initialized as empty, to be filled if necessary.
-    }
-    addLinks(outgoingLinks : GraphLink[]) {
-        this.outgoingLinks = outgoingLinks;
-    }
+  nombre: string;
+  outgoingLinks: GraphLink[];
+  constructor(nombre: string) {
+    this.nombre = nombre;
+    this.outgoingLinks = []; // Initialized as empty, to be filled if necessary.
+  }
+  addLinks(outgoingLinks: GraphLink[]) {
+    this.outgoingLinks = outgoingLinks;
+  }
 
-    createLink(destinationNode : GraphNode, distance : number) {
-        this.outgoingLinks.push(new GraphLink(destinationNode, distance));
-    }
+  createLink(destinationNode: GraphNode, distance: number) {
+    this.outgoingLinks.push(new GraphLink(destinationNode, distance));
+  }
 
-    info() {
-        console.log(`
-        GraphNode Info: ${
-            this.nombre
-        }
-        Outgoing Links : ${
-            this.outgoingLinks.length
-        }
+  info() {
+    console.log(`
+        GraphNode Info: ${this.nombre}
+        Outgoing Links : ${this.outgoingLinks.length}
         `);
-        this.outgoingLinks.forEach(Element => Element.info());
-        console.log(`End of ${
-            this.nombre
-        } info.-----------------------`);
-    }
+    this.outgoingLinks.forEach(Element => Element.info());
+    console.log(`End of ${this.nombre} info.-----------------------`);
+  }
 }
 
 /**
  * Link on weighted graph.
  */
 class GraphLink {
-    distance : number;
-    destinationNode : GraphNode;
-    constructor(destinationNode : GraphNode, distance : number) {
-        this.distance = distance;
-        this.destinationNode = destinationNode;
-    }
-    info() {
-        console.log(`
-        ->Link to ${
-            this.destinationNode.nombre
-        } distance ${
-            this.distance
-        }`);
-    }
+  distance: number;
+  destinationNode: GraphNode;
+  constructor(destinationNode: GraphNode, distance: number) {
+    this.distance = distance;
+    this.destinationNode = destinationNode;
+  }
+  info() {
+    console.log(`
+        ->Link to ${this.destinationNode.nombre} distance ${this.distance}`);
+  }
 }
 
 /*
@@ -71,16 +61,15 @@ D.createLink(F, 2);
 E.createLink(F, 1);
 // F has no outgoing links
 
-
 let _priorityQ = new PriorityQueue();
 
-function dijkstra(initialNode : GraphNode): void {
-    _priorityQ.add(new GraphLink(initialNode, 0));
+function dijkstra(initialNode: GraphNode): void {
+  _priorityQ.add(new GraphLink(initialNode, 0));
 
-    while (_priorityQ.queue.length) {
-        let actualNode = _priorityQ.queue.shift();
-        actualNode ?.info();
-    }
+  while (_priorityQ.queue.length) {
+    let actualNode = _priorityQ.queue.shift();
+    actualNode?.info();
+  }
 }
 
 dijkstra(C);
