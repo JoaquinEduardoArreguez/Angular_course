@@ -13,9 +13,9 @@ console.log(mensaje);    -> valor es "hola"
 Typescript se encarga, al compilar el js resultante de cambiar los nombres de las variables
 de la forma que corresponda.
 */
-var mensaje = "hola";
+let mensaje = "hola";
 if (true) {
-    var mensaje_1 = "adios";
+    let mensaje = "adios";
 }
 console.log(mensaje);
 /**
@@ -26,8 +26,8 @@ console.log(mensaje);
  *     Dentro de otro scope se puede crear otra const del mismo nombre,
  *     al igual que con let.
  */
-var OPCIONES = "todas";
+const OPCIONES = "todas";
 if (true) {
-    var OPCIONES_1 = "ninguna";
+    const OPCIONES = "ninguna";
 }
 console.log(OPCIONES);
