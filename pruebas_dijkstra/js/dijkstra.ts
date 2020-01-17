@@ -1,21 +1,4 @@
 /**
- * Three module to get graphics up and running
- */
-
-// import * as THREE from 'three';
-
-// Reference to div containing our scene.
-// const container = document.querySelector('#scene-container');
-
-// Create a Scene
-// const scene = new THREE.Scene();
-
-// Set scene's background color
-// Can be any of the CSS color names.
-// scene.background = new THREE.Color('skyblue');
-
-
-/**
  * Node on weighted graph.
  */
 class GraphNode {
@@ -88,37 +71,6 @@ D.createLink(F, 2);
 E.createLink(F, 1);
 // F has no outgoing links
 
-/**
- * Priority Queue to follow dijkstra's algorithm, it will contain all visited GraphNodes with their distance to starting node.
- * As an element for the Queue, we can use GraphLink(s) an they have all required data on them, a destinationNode and a distance.
- */
-
-class PriorityQueue {
-    queue : GraphLink[];
-    constructor(baseQueue? : GraphLink[]) {
-        if (baseQueue) {
-            this.queue = baseQueue;
-        } else {
-            this.queue = [];
-        }
-    }
-
-    add(graphLink : GraphLink | GraphLink[]) { // graphLink.array.forEach(element => {});
-        this.queue = this.queue.concat(graphLink);
-        // this.queue.filter(Element=>JSON.stringify())
-        this.queue.sort((a, b) => a.distance - b.distance);
-    }
-
-    info() {
-        console.log(`
-        Priority Queue Info
-        Elements:    ${
-            this.queue.length
-        }
-        `);
-        this.queue.forEach(Element => Element.info());
-    }
-}
 
 let _priorityQ = new PriorityQueue();
 
